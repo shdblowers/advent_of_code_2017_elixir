@@ -1,10 +1,10 @@
 defmodule AdventOfCode2017Elixir.InverseCaptcha do
 
-  def solve(input_string) do
-    input_string
+  def solve(input) do
+    input
     |> parse_input()
-    |> store_number_with_next_number()
-    |> find_matches_and_sum()
+    |> store_elem_with_pair(&fetch_next_element_in_circular_list/2)
+    |> sum_matches()
   end
   
   defp parse_input(input_string) do
@@ -13,11 +13,10 @@ defmodule AdventOfCode2017Elixir.InverseCaptcha do
     |> Enum.map(&(String.to_integer(&1)))
   end
 
-  defp store_number_with_next_number(num_list) do
-    num_list
+  defp store_elem_with_pair(list, get_pair_function) do
+    list
     |> Enum.with_index()
-    |> Enum.map(fn({num, index}) -> {num, fetch_next_element_in_circular_list(num_list, index)} end)
-
+    |> Enum.map(fn({elem, index}) -> {elem, get_pair_function.(list, index)} end)
   end
 
   defp fetch_next_element_in_circular_list(list, current_index) do
@@ -26,7 +25,7 @@ defmodule AdventOfCode2017Elixir.InverseCaptcha do
     Enum.fetch!(list, next_index)
   end
 
-  defp find_matches_and_sum(list) do
+  defp sum_matches(list) do
     Enum.reduce(list, 0, fn({num1, num2}, acc) ->
       if num1 == num2 do num1 + acc else acc end
     end)

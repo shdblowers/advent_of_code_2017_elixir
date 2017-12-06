@@ -1,6 +1,6 @@
 defmodule AdventOfCode2017Elixir.InverseCaptcha do
 
-  def solve(input) do
+  def solve_next_digit(input) do
     input
     |> parse_input()
     |> store_elem_with_pair(&fetch_next_element_in_circular_list/2)

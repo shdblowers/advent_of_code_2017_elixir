@@ -4,9 +4,7 @@ defmodule AdventOfCode2017Elixir.InverseCaptcha do
     input_string
     |> parse_input()
     |> store_number_with_next_number()
-    |> Enum.reduce(0, fn({num1, num2}, acc) ->
-      if num1 == num2 do num1 + acc else acc end
-    end)
+    |> find_matches_and_sum()
   end
   
   defp parse_input(input_string) do
@@ -26,6 +24,12 @@ defmodule AdventOfCode2017Elixir.InverseCaptcha do
     next_index = if current_index == (length(list) - 1) do 0 else current_index + 1 end
 
     Enum.fetch!(list, next_index)
+  end
+
+  defp find_matches_and_sum(list) do
+    Enum.reduce(list, 0, fn({num1, num2}, acc) ->
+      if num1 == num2 do num1 + acc else acc end
+    end)
   end
 
 end

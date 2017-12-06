@@ -19,4 +19,16 @@ defmodule AdventOfCode2017Elixir.InverseCaptchaTest do
     assert InverseCaptcha.solve_next_digit("91212129") == 9
   end
 
+  test "solve_halfway_around_digit simple example" do
+    assert InverseCaptcha.solve_halfway_around_digit("1212") == 6
+  end
+
+  test "solve_halfway_around_digit for result equalling 0" do
+    assert InverseCaptcha.solve_halfway_around_digit("9339") == 0
+  end
+
+  test "solve_halfway_around_digit for intermediate example" do
+    assert InverseCaptcha.solve_halfway_around_digit("12131415") == 4
+    assert InverseCaptcha.solve_halfway_around_digit("123123") == 12
+  end
 end

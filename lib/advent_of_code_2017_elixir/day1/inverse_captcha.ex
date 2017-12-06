@@ -1,4 +1,4 @@
-defmodule AdventOfCode2017Elixir.InverseCaptcha do
+defmodule AdventOfCode2017Elixir.Day1.InverseCaptcha do
 
   def solve_next_digit(input) do
     input

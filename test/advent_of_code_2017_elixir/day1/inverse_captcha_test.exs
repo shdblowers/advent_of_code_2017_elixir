@@ -1,7 +1,7 @@
-defmodule AdventOfCode2017Elixir.InverseCaptchaTest do
+defmodule AdventOfCode2017Elixir.Day1.InverseCaptchaTest do
   use ExUnit.Case
 
-  alias AdventOfCode2017Elixir.InverseCaptcha
+  alias AdventOfCode2017Elixir.Day1.InverseCaptcha
 
   test "solve_next_digit for simple example" do
     assert InverseCaptcha.solve_next_digit("1122") == 3

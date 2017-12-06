@@ -9,13 +9,13 @@ defmodule AdventOfCode2017Elixir.InverseCaptcha do
     end)
   end
   
-  def parse_input(input_string) do
+  defp parse_input(input_string) do
     input_string
     |> String.split("", trim: true)
     |> Enum.map(&(String.to_integer(&1)))
   end
 
-  def store_number_with_next_number(num_list) do
+  defp store_number_with_next_number(num_list) do
     num_list
     |> Enum.with_index()
     |> Enum.map(fn({num, index}) -> {num, fetch_next_element_in_circular_list(num_list, index)} end)
